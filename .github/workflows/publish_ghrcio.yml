@@ -32,7 +32,7 @@ jobs:
         uses: lucacome/docker-image-update-checker@v1.1.0
         with:
           base-image: caddy/caddy:latest
-          image: ${{ env.IMAGE_NAME }} # update for your image
+          image: snakuzzo/caddy-duckflare-dns # update for your image
           
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
