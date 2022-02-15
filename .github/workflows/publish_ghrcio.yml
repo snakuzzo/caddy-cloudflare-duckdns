@@ -8,8 +8,8 @@ name: Create and publish a Docker image
 on:
   #push:
   #  branches: ['latest']
-  schedule:
-    - cron: "0 */2 * * *"
+  #schedule:
+  #  - cron: "0 */2 * * *"
   workflow_dispatch:
   
 env:
