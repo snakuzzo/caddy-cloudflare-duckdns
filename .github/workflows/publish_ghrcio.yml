@@ -31,9 +31,9 @@ jobs:
         id: baseupdatecheck
         uses: lucacome/docker-image-update-checker@v1.1.0
         with:
-          base-image: caddy/caddy:latest
-          image: snakuzzo/caddy-duckflare-dns:latest # update for your image
-          
+          base-image: caddy:latest
+          image: snakuzzo/caddy-duckflare-dns:latest
+
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
