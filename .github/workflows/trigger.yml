@@ -32,7 +32,6 @@ jobs:
         uses: actions/delete-package-versions@v3
         with:
           package-name: 'caddy-cloudflare-duckdns'
-          min-versions-to-keep: 0
           
 #  build-and-push-image:
 #    runs-on: ubuntu-latest
