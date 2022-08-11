@@ -31,10 +31,11 @@ jobs:
         id: remove-package-versions
         uses: actions/delete-package-versions@v3
         with:
+          owner: ${{ github.actor }}
+          repo: 'caddy-cloudflare-duckdns'
+          package-name: 'caddy-cloudflare-duckdns'
+          token: secrets.GITHUB_TOKEN # ${{ secrets.PAT }}
           min-versions-to-keep: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-        #env:
-        #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
   build-and-push-image:
     runs-on: ubuntu-latest
