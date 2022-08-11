@@ -31,7 +31,7 @@ jobs:
         id: remove-package-versions
         uses: actions/delete-package-versions@v3
         with:
-          ackage-version-ids: "MDQ6VXNlcjcyMDUzNzE="
+          package-version-ids: "MDQ6VXNlcjcyMDUzNzE="
           #package-name: 'caddy-cloudflare-duckdns'
           
 #  build-and-push-image:
