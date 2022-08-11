@@ -29,11 +29,12 @@ jobs:
     steps:
       - name: Remove package versions
         id: remove-package-versions
-        uses: epitomeglobal/remove-package-versions@master
+        uses: actions/delete-package-versions@v3
         with:
-          keep-versions: 0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          min-versions-to-keep: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+        #env:
+        #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
   build-and-push-image:
     runs-on: ubuntu-latest
