@@ -31,10 +31,7 @@ jobs:
         id: remove-package-versions
         uses: actions/delete-package-versions@v3
         with:
-          owner: 'snakuzzo'
-          repo: 'caddy-cloudflare-duckdns'
           package-name: 'caddy-cloudflare-duckdns'
-          token: secrets.GITHUB_TOKEN
           min-versions-to-keep: 0
           
   build-and-push-image:
