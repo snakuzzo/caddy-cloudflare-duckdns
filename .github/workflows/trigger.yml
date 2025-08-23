@@ -1,39 +1,15 @@
 name: Caddy Build
 
 env:
-  # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
 
-
-# workflow triggers
 on:
-  #push:
-  #  branches: [ "latest" ]
-    # Publish semver tags as releases.
-  #  tags: [ 'v*.*.*' ]
-  #pull_request:
-  #  branches: [ "latest" ]
   workflow_dispatch:
-
-  # Allows external webhook trigger
   repository_dispatch:
-    types:
-      - webhook
+    types: [webhook]
 
 jobs:
-
-#  remove-package-versions:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Remove package versions
-#        id: remove-package-versions
-#        uses: actions/delete-package-versions@v3
-#        with:
-#          package-version-ids: "MDEwOlJlcG9zaXRvcnkzOTc0MTI4NDk="
-#          #package-name: 'caddy-cloudflare-duckdns'
-
   build-and-push-image:
     runs-on: ubuntu-latest
     permissions:
@@ -42,10 +18,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Log in to the Container registry
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -53,12 +29,12 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
