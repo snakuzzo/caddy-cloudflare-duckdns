@@ -1,4 +1,4 @@
-FROM caddy:latest-builder AS builder
+FROM caddy:2.10-builder AS builder
 
 RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 
